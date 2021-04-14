@@ -1,0 +1,30 @@
+{
+  "name": "@unified-tasklist/common",
+  "version": "0.0.1",
+  "license": "UNLICENSED",
+  "cacheDirectories": [
+    "node_modules"
+  ],
+  "dependencies": {
+    "react": "16.8.6",
+    "tslib": "1.9.3"
+  },
+  "devDependencies": {
+    "@types/node": "13.7.1",
+    "@types/react": "16.8.10",
+    "@types/react-dom": "16.8.3",
+    "typescript": "3.4.5"
+  },
+  "peerDependencies": {
+    "@hot-loader/react-dom": "16.8.6",
+    "@types/react": "16.8.10",
+    "@types/react-dom": "16.8.3",
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
+    "tslib": "1.9.3"
+  },
+  "scripts": {
+    "build": "tsc --declaration -p ./",
+    "start": "tsc --watch --declaration -p ./"
+  }
+}

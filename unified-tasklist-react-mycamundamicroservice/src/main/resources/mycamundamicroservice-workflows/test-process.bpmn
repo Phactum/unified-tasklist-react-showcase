@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_131gees" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.1.1">
+  <bpmn:process id="TestProcess" name="test process" isExecutable="true">
+    <bpmn:startEvent id="StartEvent_1" name="wants to test unified tasklist">
+      <bpmn:extensionElements>
+        <camunda:formData>
+          <camunda:formField id="Info" label="Info to be shown in the usertask form" type="string" />
+        </camunda:formData>
+      </bpmn:extensionElements>
+      <bpmn:outgoing>Flow_1kjpdrh</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_1kjpdrh" sourceRef="StartEvent_1" targetRef="Activity_0cmrm6n" />
+    <bpmn:userTask id="Activity_0cmrm6n" name="test unified tasklist by filling form" camunda:formKey="myformkey">
+      <bpmn:incoming>Flow_1kjpdrh</bpmn:incoming>
+      <bpmn:outgoing>Flow_156iq6r</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:endEvent id="Event_1tsj9w4" name="unified tasklist tested">
+      <bpmn:incoming>Flow_156iq6r</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_156iq6r" sourceRef="Activity_0cmrm6n" targetRef="Event_1tsj9w4" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="TestProcess">
+      <bpmndi:BPMNEdge id="Flow_1kjpdrh_di" bpmnElement="Flow_1kjpdrh">
+        <di:waypoint x="215" y="117" />
+        <di:waypoint x="270" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_156iq6r_di" bpmnElement="Flow_156iq6r">
+        <di:waypoint x="370" y="117" />
+        <di:waypoint x="432" y="117" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1">
+        <dc:Bounds x="179" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="162" y="142" width="70" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0hxxk8r_di" bpmnElement="Activity_0cmrm6n">
+        <dc:Bounds x="270" y="77" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1tsj9w4_di" bpmnElement="Event_1tsj9w4">
+        <dc:Bounds x="432" y="99" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="415" y="142" width="70" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>

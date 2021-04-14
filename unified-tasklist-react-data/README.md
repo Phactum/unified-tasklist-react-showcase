@@ -1,0 +1,7 @@
+# unified-tasklist-react-data
+
+As mentioned in `unified-tasklist-react/README.md` on one hand this project can be embedded into Camunda microservices. But on the other hand it is already prepared to be run in a standalone GUI-microservice (for more details read `unified-tasklist-react-frontend/README.md`). In preparation to this the frontend does not access Camunda to get information about available user tasks. Instead it uses a Spring service which implements a certain interface provided by this module (e.g. `at.phactum.tasklist.web.UserTaskInstanceDataProvider`).
+
+So if the frontend is embedded into an existing Camunda microservice (e.g. mycamundamicroservice) then this microservice has to provide an implemenation for those interfaces. An example is available in the project `unified-tasklist-react-mycamundamicroservice`. The implemenation uses the Camunda API to get the information required.
+
+Once the frontend will be used in a standalone GUI-microservice this interface has to be implemented by a service provided by the GUI-microservice. Since there is no Camunda in the GUI-microservice the service might use an independend database to retrieve process and user task information (e.g. MongoDB, ElasticSearch). In addition this database has to be filled based on Camunda events which may use a REST-API of the standalone GUI-microservice to report those events which will update the database (see also `unified-tasklist-react/README.md`).

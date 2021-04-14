@@ -1,0 +1,7 @@
+camunda-db.mv.db
+
+target
+.project
+.classpath
+.settings
+.factorypath

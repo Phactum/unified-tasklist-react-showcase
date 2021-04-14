@@ -1,0 +1,92 @@
+openapi: 3.0.3
+info:
+  title: Frontend API
+  description: Frontend API for my Camunda microservice web GUI.
+  version: 1.0.0
+servers:
+  - url: /mycamundamicroservice/api/v1
+paths:
+  /myformkey/{taskId}:
+    get:
+      tags:
+        - myformkey
+      operationId: getDetailsForMyFormUserTask
+      description: details of a certain usertask
+      parameters:
+        - name: taskId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        200:
+          description: usertask details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MyFormDetails'
+        400:
+          description: no or invalid taskId
+        404:
+          description: no task for the given taskId found
+        401:
+          description: You are not authorized to access the item
+        403:
+          description: Accessing the resource you were trying to reach is forbidden
+    post:
+      tags:
+        - myformkey
+      operationId: completeMyFormUserTask
+      description: details of a certain usertask
+      parameters:
+        - name: taskId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/MyFormCompleteDetails"
+      responses:
+        200:
+          description: task completed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MyFormDetails'
+        400:
+          description: no or invalid taskId
+        404:
+          description: no task for the given taskId found
+        401:
+          description: You are not authorized to access the item
+        403:
+          description: Accessing the resource you were trying to reach is forbidden
+components:
+  schemas:
+    MyFormActions:
+      type: string
+      enum:
+        - THIS_ACTION
+        - THAT_ACTION
+    MyFormDetails:
+      type: object
+      properties:
+        myFormInfo:
+          type: string
+        availableActions:
+          type: array
+          items:
+            $ref: '#/components/schemas/MyFormActions'
+        completedWith:
+          $ref: "#/components/schemas/MyFormCompleteDetails"
+    MyFormCompleteDetails:
+      type: object
+      properties:
+        action:
+          $ref: '#/components/schemas/MyFormActions'
+        comment:
+          type: string

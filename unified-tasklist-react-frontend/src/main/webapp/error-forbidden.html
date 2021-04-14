@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html class="no-js" dir="ltr" lang="de">
+<head>
+  <meta charset="utf-8">
+  <title>unified tasklist react</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+</head>
+<body>
+
+  <h1>Forbidden</h1>
+  <p>Please ask for further permissions.</p>
+  <div>
+    <button onclick="onRetryClick()">Retry</button>
+  </div>
+
+  <noscript>
+    <h1>You must enable javascript to view this page.</h1>
+  </noscript>
+
+  <script>
+    function resetCookie(name) {
+      document.cookie = name + "=; expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
+    function onRetryClick() {
+      resetCookie('token');
+      if (window.location.search) {
+          var pos = window.location.search.indexOf('ref=');
+          if (pos != -1) {
+            var endPos = window.location.search.indexOf('&', pos);
+            var encodedTarget;
+            if (endPos != -1) {
+                encodedTarget = window.location.search.substring(pos + 4, endPos);
+            } else {
+                encodedTarget = window.location.search.substring(pos + 4);
+            }
+            window.location.href = decodeURIComponent(encodedTarget);
+            return;
+          }
+        }
+      window.location.href = '/';
+    }
+  </script>
+
+</body>
+</html>
